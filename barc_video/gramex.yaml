@@ -1,0 +1,25 @@
+app:
+    listen:
+        port: 7777
+    settings:
+        auth: true
+        autoreload: false
+        debug: false
+        xsrf_cookies: false
+url:
+    barc:
+        pattern: /$YAMLURL/
+        handler: FileHandler
+        kwargs:
+            path: $YAMLPATH/video.html
+    
+    video:
+        pattern: /video
+        handler: FunctionHandler
+        kwargs:
+            function: video_linking.video_urls
+            # auth: false
+            headers:
+                X-Frame-Options: DENY
+                Content-Type: application/json
+                X-Content-Type-Options: no sniff

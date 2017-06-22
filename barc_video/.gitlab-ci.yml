@@ -1,0 +1,7 @@
+validate:
+  script:
+    - validate_files
+    - flake8 .
+    - eslint --ext js,html .
+    - htmllint
+    - jscpd --path . --languages python,javascript,htmlmixed,css --skip-comments
